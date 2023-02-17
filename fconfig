@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from res.strings import fconfig_dialog
+import os.path
+import shutil
+
+
+print(fconfig_dialog.greeting[f'greeting_RU'])
+
+tg_api_key = input(fconfig_dialog.dialogs[f'tg_key_enter_RU'])
+
+example_config = '../config.ini'
+config_file = '../../config/config.ini'
+
+
+def do_config_file(tg_api_key):
+    shutil.copy(example_config, config_file)
+
+do_config_file(tg_api_key)

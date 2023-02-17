@@ -1,0 +1,6 @@
+__main__ 2023-02-17 15:47:11,294 INFO Testing the custom logger for module __main__...
+__main__ 2023-02-17 15:47:11,294 ERROR Отсутствует файл config.ini, воспользуйтесь скриптом конфигурации fconfig
+Traceback (most recent call last):
+  File "C:\Users\makar\PycharmProjects\TgUsersParser\core\init.py", line 28, in config_exist
+    config = open(config_path)
+FileNotFoundError: [Errno 2] No such file or directory: '../res/config/config.ini'
