@@ -9,15 +9,14 @@ import configparser
 print(fconfig_dialog.greeting[f'greeting_RU'])
 
 tg_api_key = input(fconfig_dialog.dialogs[f'tg_key_enter_RU'])
+config = configparser.ConfigParser()
 
 example_config = '../config.ini'
 config_file = '../../config/config.ini'
 
 
 def do_config_file(tg_api_key):
-    shutil.copy(example_config, config_file)
-    config = configparser.ConfigParser()
-    config.sections()
+    config['TG'] = {'api_key': tg_api_key}
 
 
 do_config_file(tg_api_key)
