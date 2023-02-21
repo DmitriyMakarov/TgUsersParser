@@ -4,6 +4,7 @@ import os.path
 import logging
 import shutil
 from res.strings import error_messages
+from core.front_bot import bot
 
 
 config_path = '../res/config/config.ini'
@@ -19,7 +20,7 @@ init_logger.addHandler(init_logger_handler)
 init_logger.info(f"Testing the custom logger for module {__name__}...")
 
 
-def copy_config_example():
+def create_config():
     shutil.copy(fconfig_path, '../fconfig')
 
 
@@ -29,8 +30,9 @@ def config_exist():
     except:
         init_logger.exception(error_messages.init_errors['noconfig_RU'])
         print(error_messages.init_errors['noconfig_RU'])
-        copy_config_example()
+#        create_config()
         return False
     return True
 
-print(config_exist())
+if config_exist() == True:
+    bot
