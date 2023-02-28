@@ -27,12 +27,18 @@ async def get_user():
     #await participants = client.get_participants(channel)
    # await print(client.get_participants(channel))
     counter = 0
-    users = [{}]
     iters = client.get_participants(channel)
+    users = dict()
     for iter in await iters:
-        print(iter.to_json())
-        users.append(iter.to_json())
+        #print(iter.username)
+        user = {'id': '', 'bot': '', 'premium': '', 'access_hash': '', 'first_name': '', 'last_name': '',
+                'username': '', 'phone': '', 'status': ''}
+
+        for item in user.keys():
+            user[item]=iter.item
+            #users.update(user)
         counter = counter + 1
+    print(users)
     print(counter)
     xlsx.do_xlsx(users)
     #await client(LeaveChannelRequest(channel))
