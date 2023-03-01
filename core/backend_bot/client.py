@@ -30,17 +30,25 @@ async def get_user():
     iters = client.get_participants(channel)
     users = dict()
     for iter in await iters:
-        #print(iter.username)
-        user = {'id': '', 'bot': '', 'premium': '', 'access_hash': '', 'first_name': '', 'last_name': '',
-                'username': '', 'phone': '', 'status': ''}
+        user = {'id': iter.id, 'bot': iter.bot, 'premium': iter.premium, 'access_hash': iter.access_hash,
+                'first_name': iter.first_name, 'last_name': iter.last_name, 'username': iter.username,
+                'phone': iter.phone, 'status': str(iter.status) }
+        print(user)
 
-        for item in user.keys():
-            user[item]=iter.item
-            #users.update(user)
+        users.update({counter: user})
+
         counter = counter + 1
-    print(users)
-    print(counter)
-    xlsx.do_xlsx(users)
+        #print(user)
+    #print(users)
+    xlsx.do(users)
+        #for key in user.keys():
+        #    user[key]=iter.key
+        #    #users.update(user)
+        #    print(key)
+    #    counter = counter + 1
+    #print(users)
+    #print(counter)
+    #xlsx.do_xlsx(users)
     #await client(LeaveChannelRequest(channel))
 
 with client:
