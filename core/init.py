@@ -35,4 +35,4 @@ def config_exist():
     return True
 
 if config_exist() == True:
-    bot
+    bot.main()
