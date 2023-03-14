@@ -1,3 +1,4 @@
 /res/config/config.ini
 /res/config/client.session
 /res/db/files/
+/res/db/users.db

@@ -8,6 +8,8 @@ from aiogram.utils.helper import Helper, HelperMode, ListItem
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 
+from core.helpers import mysql
+
 
 config = configparser.ConfigParser()
 config.read('../../res/config/config.ini')
@@ -29,6 +31,12 @@ class States(Helper):
 
 @dp.message_handler(commands=["start"])
 async def cmd_start(message: types.Message):
+    print(message.chat.id)
+    #print(await users_db.user_exist_check(message.chat.id))
+    print(asyncio.run(mysql.check_user_exist(message.chat.id)), 'test')
+    #print(DB.user_exist_check(user_id=str(message.chat.id)))
+#    if await users_db.user_exist_check(message.chat.id) == 400:
+#        users_db.user_add(message.chat.id)
     keyboard = bot_menu.send_welcome()
     await message.answer(bot_messages.start_message, reply_markup=keyboard)
 
